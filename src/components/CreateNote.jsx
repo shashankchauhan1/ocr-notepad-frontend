@@ -17,7 +17,7 @@ const CreateNote = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/notes/create',
+        'https://ocr-notepad-backend.onrender.com/api/notes/create',
         { title, content },
         { withCredentials: true }
       );

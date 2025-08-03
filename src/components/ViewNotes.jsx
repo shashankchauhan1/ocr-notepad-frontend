@@ -10,7 +10,7 @@ const ViewNotes = () => {
 
   const fetchNotes = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/notes', {
+      const res = await axios.get('https://ocr-notepad-backend.onrender.com/api/notes', {
         withCredentials: true,
       });
       setNotes(res.data.notes);
@@ -24,7 +24,7 @@ const ViewNotes = () => {
     if (!confirmDelete) return;
 
     try {
-      const res = await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      const res = await axios.delete(`https://ocr-notepad-backend.onrender.com/api/notes/${id}`, {
         withCredentials: true,
       });
       setMessage(res.data.message);

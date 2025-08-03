@@ -42,7 +42,7 @@ const ClickImage = () => {
     }
     try {
       await axios.post(
-        'http://localhost:5000/api/notes/create',
+        'https://ocr-notepad-backend.onrender.com/api/notes/create',
         {
           title: 'Extracted from Webcam', // Changed title to be more specific
           content: text,

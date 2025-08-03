@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   // This function will check the session with the backend
   const verifySession = async () => {
     try {
-      await axios.get('http://localhost:5000/api/auth/verify', { withCredentials: true });
+      await axios.get('https://ocr-notepad-backend.onrender.com/api/auth/verify', { withCredentials: true });
       setIsLoggedIn(true);
     } catch (error) {
       console.log('Session verification failed:', error.response?.data?.message);

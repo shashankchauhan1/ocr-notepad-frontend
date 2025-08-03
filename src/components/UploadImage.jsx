@@ -42,7 +42,7 @@ const UploadImage = () => {
     }
     try {
       await axios.post(
-        'http://localhost:5000/api/notes/create',
+        'https://ocr-notepad-backend.onrender.com/api/notes/create',
         {
           title: 'Extracted from Image',
           content: text, // Use the potentially edited text
