@@ -1,0 +1,128 @@
+/* Home.css */
+
+.container {
+  min-height: 100vh;
+  background-color: #121212;
+  color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: serif;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: #1e1e1e;
+  padding: 3.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.appName {
+  color: #a66bff;
+}
+
+.subtitle {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.tagline {
+  color: #00bfff;
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 1rem 2rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  color: white;
+  font-size: 1rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------- */
+/* Responsive Styles */
+/* ---------------------------------- */
+
+/* Tablet-specific styles for screens between 481px and 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .box {
+    padding: 2.5rem;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .subtitle,
+  .tagline {
+    font-size: 1rem;
+  }
+  .tagline {
+    margin-bottom: 2rem;
+  }
+  .button-container {
+    gap: 0.75rem;
+  }
+  .button {
+    padding: 0.8rem 1.6rem;
+  }
+}
+
+/* Mobile Phone-specific styles for screens up to 480px wide */
+@media (max-width: 480px) {
+  .box {
+    padding: 1.5rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle,
+  .tagline {
+    font-size: 0.9rem;
+  }
+  .tagline {
+    margin-bottom: 2rem;
+  }
+  .button-container {
+    gap: 0.5rem;
+  }
+  .button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

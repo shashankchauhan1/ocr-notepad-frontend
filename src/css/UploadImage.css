@@ -1,0 +1,153 @@
+/* UploadImage.css */
+
+body {
+  background-color: #000;
+}
+
+/* Dark theme for Upload Image component */
+
+/* General container styling */
+.upload-container {
+  max-width: 700px; /* Slightly smaller for a tighter feel */
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background-color: #121212; /* Darker black */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
+/* Header styling */
+.upload-container h2 {
+  color: #a020f0; /* Violet */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Custom file upload button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #a020f0; /* Violet */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.custom-file-upload:hover {
+  background-color: #8a00d9; /* Darker violet */
+  transform: scale(1.05);
+}
+
+/* Hide the actual file input */
+.file-input {
+  display: none;
+}
+
+/* Content and button layout */
+.content-section, .button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Image preview styling */
+.image-preview {
+  border: 1px solid #444; /* Grey */
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #2a2a2a; /* Dark grey */
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Text area styling */
+.text-section {
+  width: 100%;
+}
+
+.text-section h3 {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.responsive-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #444; /* Grey */
+  border-radius: 6px;
+  background-color: #1a1a1a; /* Dark grey */
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+/* Button group for actions */
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.save-button {
+  background-color: #a020f0; /* Violet */
+  color: white;
+}
+
+.save-button:hover {
+  background-color: #8a00d9;
+}
+
+.go-back-button {
+  background-color: #444; /* Grey */
+  color: white;
+}
+
+.go-back-button:hover {
+  background-color: #555;
+}
+
+/* Responsive adjustments for all screen sizes */
+@media (max-width: 600px) {
+  .upload-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .content-section, .button-group {
+    gap: 1rem;
+  }
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+  }
+}
