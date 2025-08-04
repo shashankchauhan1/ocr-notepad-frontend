@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import Tesseract from 'tesseract.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../css/UploadImage.css'; // Reusing the same CSS file
+import '../css/UploadImage.css';
 
 const ClickImage = () => {
   const webcamRef = useRef(null);
@@ -12,6 +12,24 @@ const ClickImage = () => {
   const [image, setImage] = useState(null);
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
+  const [permissionGranted, setPermissionGranted] = useState(false);
+
+  // UseEffect hook to request camera permissions when the component mounts
+  useEffect(() => {
+    async function requestCameraPermission() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        // Permission was granted, so we stop the stream and set state
+        stream.getTracks().forEach(track => track.stop());
+        setPermissionGranted(true);
+      } catch (err) {
+        // Permission was denied or an error occurred
+        console.error("Camera access denied or error:", err);
+        setPermissionGranted(false);
+      }
+    }
+    requestCameraPermission();
+  }, []);
 
   const captureImage = () => {
     // Take a screenshot from the webcam feed
@@ -44,7 +62,7 @@ const ClickImage = () => {
       await axios.post(
         'https://ocr-notepad-backend.onrender.com/api/notes/create',
         {
-          title: 'Extracted from Webcam', // Changed title to be more specific
+          title: 'Extracted from Webcam',
           content: text,
         },
         { withCredentials: true }
@@ -75,37 +93,48 @@ const ClickImage = () => {
     <div className="upload-container">
       <h2>📷 Capture Image</h2>
       
-      <div className="content-section">
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          className="responsive-image" // Use the same image class for responsiveness
-        />
-        <div className="button-group">
+      {permissionGranted ? (
+        <div className="content-section">
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            className="responsive-image"
+            // Set video constraints to prefer the back camera on mobile
+            videoConstraints={{
+              facingMode: { exact: 'environment' }
+            }}
+          />
+          <div className="button-group">
             <button onClick={captureImage} className="button save-button">Capture Image</button>
+          </div>
+          
+          {loading && <p>Processing image...</p>}
+          
+          {image && (
+            <div className="image-preview">
+              <img src={image} alt="Captured" className="responsive-image" />
+            </div>
+          )}
+          
+          {text && (
+            <div className="text-section">
+              <h3>Extracted Text:</h3>
+              <textarea
+                value={text}
+                onChange={handleTextChange}
+                rows={10}
+                className="responsive-textarea"
+              />
+            </div>
+          )}
         </div>
-        
-        {loading && <p>Processing image...</p>}
-        
-        {image && (
-          <div className="image-preview">
-            <img src={image} alt="Captured" className="responsive-image" />
-          </div>
-        )}
-        
-        {text && (
-          <div className="text-section">
-            <h3>Extracted Text:</h3>
-            <textarea
-              value={text}
-              onChange={handleTextChange}
-              rows={10}
-              className="responsive-textarea"
-            />
-          </div>
-        )}
-      </div>
+      ) : (
+        <div className="permission-message">
+          <p>Please grant camera access to use this feature.</p>
+          <p>Check your browser settings if you are not prompted.</p>
+        </div>
+      )}
 
       <div className="button-group">
         {text && (
